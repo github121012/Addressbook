@@ -18,7 +18,8 @@ after that, u can get into main interface.
 ![3](https://github.com/github121012/Addressbook/assets/156876047/81ab9679-d449-4d68-bfd4-d381ab7eb2c4)
 
 there, u can display contacts by the order of time or alphabet.
-u can add new contact or delete them.
+
+u can add new contact or right click contact to delete them.
 
 ![image](https://github.com/github121012/Addressbook/assets/156876047/dac07ae8-0ba0-4e35-90d3-e39402566577)
 
