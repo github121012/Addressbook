@@ -1,7 +1,8 @@
 # Addressbook
 Addressbook_Qt6.2
 
-environment: os: win10     ide: Qt6.2   database: sqlite3
+**environment**: 
+os: win10     ide: Qt6.2   database: sqlite3
 
 using sqlite3 as local relation database, no internet connection. 
 
