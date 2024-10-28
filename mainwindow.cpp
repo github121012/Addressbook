@@ -72,7 +72,7 @@ int MainWindow::connectsqlite()
         }
         else
         {
-            a1 = QSqlDatabase::addDatabase("SQLITECIPHER");
+            a1 = QSqlDatabase::addDatabase("QSQLITE");
 
         }
 
