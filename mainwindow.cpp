@@ -21,7 +21,6 @@ MainWindow::MainWindow(QWidget *parent)
     display_dateAndtime();
 
     connect(ui->pushButton_1, SIGNAL(clicked()), this, SLOT(btn1_clicked()));
-    connect(ui->pushButton_2, SIGNAL(clicked()), this, SLOT(btn2_clicked()));
     ui->pushButton_2->setShortcut(Qt::Key_Return);
 
     connect(timer,SIGNAL(timeout()),this,SLOT(display_dateAndtime()));
@@ -105,9 +104,8 @@ void MainWindow::btn1_clicked()
     w1->show();
 }
 
-void MainWindow::btn2_clicked()
+void MainWindow::on_pushButton_2_clicked()
 {
-
     if(connectsqlite())
     {
         Addressbook *w2 = new Addressbook;
@@ -116,8 +114,4 @@ void MainWindow::btn2_clicked()
     }
 
 }
-
-
-
-
 

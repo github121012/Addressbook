@@ -11,21 +11,20 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
 
-public:
-    MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
-    int connectsqlite();
-    void get_dateAndtime(QString &date, QString &time);
+    public:
+        MainWindow(QWidget *parent = nullptr);
+        ~MainWindow();
+        int connectsqlite();
+        void get_dateAndtime(QString &date, QString &time);
 
 
 
-private slots:
-    void btn1_clicked();
-    void btn2_clicked();
-    void display_dateAndtime();
+    private slots:
+        void btn1_clicked();
+        void display_dateAndtime();
+        void on_pushButton_2_clicked();
 
-
-private:
-    Ui::MainWindow *ui;
+    private:
+        Ui::MainWindow *ui;
 };
 #endif // MAINWINDOW_H
