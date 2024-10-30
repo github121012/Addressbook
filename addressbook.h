@@ -24,7 +24,7 @@ private slots:
     void btn5_clicked();
     void QuerySqlite();
     void deleteSqlite();
-    void modifySqlite();
+    void modify();
 
     void ListSqlite(bool q1);
 

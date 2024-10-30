@@ -58,7 +58,7 @@
    </size>
   </property>
   <property name="toolButtonStyle">
-   <enum>Qt::ToolButtonIconOnly</enum>
+   <enum>Qt::ToolButtonStyle::ToolButtonIconOnly</enum>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QPushButton" name="pushButton">
@@ -121,7 +121,7 @@
      </size>
     </property>
     <property name="contextMenuPolicy">
-     <enum>Qt::CustomContextMenu</enum>
+     <enum>Qt::ContextMenuPolicy::CustomContextMenu</enum>
     </property>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(255, 255, 255);
@@ -132,7 +132,7 @@
      <number>14</number>
     </property>
     <property name="sortingEnabled">
-     <bool>false</bool>
+     <bool>true</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_3">
@@ -161,7 +161,8 @@
      </rect>
     </property>
     <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);</string>
+     <string notr="true">background-color: rgb(255, 255, 255);
+color: rgb(0, 0, 0);</string>
     </property>
     <property name="digitCount">
      <number>8</number>
@@ -180,7 +181,7 @@
      <string/>
     </property>
     <property name="alignment">
-     <set>Qt::AlignCenter</set>
+     <set>Qt::AlignmentFlag::AlignCenter</set>
     </property>
    </widget>
    <widget class="QPushButton" name="pushButton_4">
@@ -199,62 +200,26 @@
      <string>Back</string>
     </property>
    </widget>
-   <widget class="QComboBox" name="comboBox">
-    <property name="geometry">
-     <rect>
-      <x>10</x>
-      <y>50</y>
-      <width>80</width>
-      <height>23</height>
-     </rect>
-    </property>
-    <property name="font">
-     <font>
-      <pointsize>9</pointsize>
-      <italic>false</italic>
-      <bold>true</bold>
-      <underline>false</underline>
-     </font>
-    </property>
-    <property name="styleSheet">
-     <string notr="true">background-color: rgb(255, 255, 255);
-selection-color: rgb(0, 0, 0);
-selection-background-color: rgb(255, 255, 255);
-</string>
-    </property>
-    <item>
-     <property name="text">
-      <string>time</string>
-     </property>
-    </item>
-    <item>
-     <property name="text">
-      <string>alphabet</string>
-     </property>
-    </item>
-   </widget>
    <widget class="QPushButton" name="pushButton_5">
     <property name="geometry">
      <rect>
-      <x>415</x>
-      <y>5</y>
-      <width>20</width>
-      <height>20</height>
+      <x>390</x>
+      <y>40</y>
+      <width>32</width>
+      <height>28</height>
      </rect>
+    </property>
+    <property name="autoFillBackground">
+     <bool>true</bool>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(255, 255, 255);</string>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="icon">
-     <iconset>
-      <normaloff>../../../Pictures/a2.jpg</normaloff>
-      <normalon>../../../Pictures/a1.jpg</normalon>
-      <disabledoff>../../../Pictures/a2.jpg</disabledoff>
-      <disabledon>../../../Pictures/a1.jpg</disabledon>
-      <activeoff>../../../Pictures/a2.jpg</activeoff>
-      <activeon>../../../Pictures/a1.jpg</activeon>
-      <selectedoff>../../../Pictures/a2.jpg</selectedoff>
-      <selectedon>../../../Pictures/a1.jpg</selectedon>../../../Pictures/a2.jpg</iconset>
+     <iconset theme="QIcon::ThemeIcon::ViewRefresh"/>
     </property>
     <property name="iconSize">
      <size>
@@ -262,6 +227,69 @@ selection-background-color: rgb(255, 255, 255);
       <height>20</height>
      </size>
     </property>
+   </widget>
+   <widget class="QWidget" name="">
+    <property name="geometry">
+     <rect>
+      <x>5</x>
+      <y>50</y>
+      <width>146</width>
+      <height>23</height>
+     </rect>
+    </property>
+    <layout class="QHBoxLayout" name="horizontalLayout">
+     <item>
+      <widget class="QLabel" name="label_2">
+       <property name="text">
+        <string>Order By:</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QComboBox" name="comboBox">
+       <property name="font">
+        <font>
+         <pointsize>9</pointsize>
+         <italic>false</italic>
+         <bold>true</bold>
+         <underline>false</underline>
+        </font>
+       </property>
+       <property name="mouseTracking">
+        <bool>true</bool>
+       </property>
+       <property name="layoutDirection">
+        <enum>Qt::LayoutDirection::LeftToRight</enum>
+       </property>
+       <property name="autoFillBackground">
+        <bool>false</bool>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(255, 255, 255);
+selection-color: rgb(0, 0, 0);
+color: rgb(0, 0, 0);
+selection-background-color: rgb(255, 255, 255);
+</string>
+       </property>
+       <property name="currentText">
+        <string>Time</string>
+       </property>
+       <property name="insertPolicy">
+        <enum>QComboBox::InsertPolicy::InsertAfterCurrent</enum>
+       </property>
+       <item>
+        <property name="text">
+         <string>Time</string>
+        </property>
+       </item>
+       <item>
+        <property name="text">
+         <string>Alphabet</string>
+        </property>
+       </item>
+      </widget>
+     </item>
+    </layout>
    </widget>
   </widget>
  </widget>

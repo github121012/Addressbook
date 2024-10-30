@@ -47,9 +47,46 @@ void AddNew::AddSqlite()
     QString email = ui->lineEdit_3->text();
     QString address = ui->lineEdit_4->text();
 
-    QString contact = QString("'%1', '%2', '%3', '%4'").arg(name, phone, email, address);
+    if(s1 != "")
+    {
+        QSqlDatabase a1;
+        if(QSqlDatabase::contains("qt_sql_default_connection"))
+        {
+            a1 = QSqlDatabase::database("qt_sql_default_connection");
+        }
+        else
+        {
+            a1 = QSqlDatabase::addDatabase("QSQLITE");
 
-    if(name == "" || phone == "")
+        }
+        a1.setDatabaseName("addressbook.sqlite3");
+        a1.setPassword("sa");
+        a1.open();
+
+        QSqlQuery b1;
+        b1.exec(QString("Update contact "
+                        "SET phone='%1', email='%2', address='%3' "
+                        "Where name='%4'").arg(phone, email, address,s1));
+        if(!filename.isEmpty())
+        {
+            QStringList r1 = filename.split("/");
+            QStringList r2 = r1.last().split(".");
+            QString r3 = r2.last();
+            QFile currentfile(filename);
+
+            QFileInfo f1("./pic/");
+            if(!f1.isDir())
+            {
+                QDir *path = new QDir;
+                path->mkpath("./pic/");
+            }
+
+            currentfile.copy(QString("./pic/%1.%2").arg(name, r3));
+        }
+        ui->label_5->setText("successfully modified!");
+
+    }
+    else if(name == "" || phone == "")
     {
         ui->label_5->setText("name or phone can't be null!!");
     }
@@ -62,7 +99,7 @@ void AddNew::AddSqlite()
         }
         else
         {
-            a1 = QSqlDatabase::addDatabase("SQLITECIPHER");
+            a1 = QSqlDatabase::addDatabase("QSQLITE");
 
         }
         a1.setDatabaseName("addressbook.sqlite3");
@@ -88,25 +125,27 @@ void AddNew::AddSqlite()
         }
         else
         {
+            QString contact = QString("'%1', '%2', '%3', '%4'").arg(name, phone, email, address);
             b1.exec(QString("Insert Into contact"
                            "(name, phone, email, address)"
                             "Values(%1)").arg(contact));
 
-            if(!filename.isEmpty()){
-            QStringList r1 = filename.split("/");
-            QStringList r2 = r1.last().split(".");
-            QString r3 = r2.last();
-            qDebug()<<r3;
-            QFile currentfile(filename);
-
-            QFileInfo f1("./pic/");
-            if(!f1.isDir())
+            if(!filename.isEmpty())
             {
-                QDir *path = new QDir;
-                path->mkpath("./pic/");
-            }
+                QStringList r1 = filename.split("/");
+                QStringList r2 = r1.last().split(".");
+                QString r3 = r2.last();
+                QFile currentfile(filename);
 
-            currentfile.copy(QString("./pic/%1.%2").arg(name, r3));}
+                QFileInfo f1("./pic/");
+                if(!f1.isDir())
+                {
+                    QDir *path = new QDir;
+                    path->mkpath("./pic/");
+                }
+
+                currentfile.copy(QString("./pic/%1.%2").arg(name, r3));
+            }
             ui->label_5->setText("successfully added!");
         }
 
@@ -136,7 +175,6 @@ void AddNew::btn3_clicked()
 
 void AddNew::modifySqlite()
 {
-    qDebug()<<"called";
     QSqlDatabase a1;
     if(QSqlDatabase::contains("qt_sql_default_connection"))
     {
@@ -144,7 +182,7 @@ void AddNew::modifySqlite()
     }
     else
     {
-        a1 = QSqlDatabase::addDatabase("SQLITECIPHER");
+        a1 = QSqlDatabase::addDatabase("QSQLITE");
 
     }
     a1.setDatabaseName("addressbook.sqlite3");
@@ -160,16 +198,14 @@ void AddNew::modifySqlite()
         QString phone = b1.value(1).toString();
         QString email = b1.value(2).toString();
         QString address = b1.value(3).toString();
-        ui->lineEdit->setPlaceholderText(name);
+        ui->lineEdit->setText(name);
         ui->lineEdit_2->setPlaceholderText(phone);
         ui->lineEdit_3->setPlaceholderText(email);
         ui->lineEdit_4->setPlaceholderText(address);
     }
-
     a1.close();
 
-
-
+    //btn1_clicked();
 }
 
 

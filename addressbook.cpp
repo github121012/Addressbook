@@ -168,7 +168,6 @@ void Addressbook::on_comboBox_textActivated(const QString &arg1)
     else ListSqlite(0);
 }
 
-
 void Addressbook::on_listWidget_customContextMenuRequested(const QPoint &pos)
 {
     QMenu  *m1 = new QMenu(ui->listWidget);
@@ -185,7 +184,7 @@ void Addressbook::on_listWidget_customContextMenuRequested(const QPoint &pos)
     QAction  *mod = new QAction(tr("Modify  "), this);
 
     connect(d1, SIGNAL(triggered()), this, SLOT(deleteSqlite()));
-    connect(mod, SIGNAL(triggered()), this, SLOT(modifySqlite()));
+    connect(mod, SIGNAL(triggered()), this, SLOT(modify()));
 
 
     m1->addAction(d1);
@@ -231,7 +230,7 @@ void Addressbook::deleteSqlite()
 
 }
 
-void Addressbook::modifySqlite()
+void Addressbook::modify()
 {
     QList<QListWidgetItem*> items = ui->listWidget->selectedItems();
 
@@ -245,9 +244,8 @@ void Addressbook::modifySqlite()
     }
 
     AddNew *w = new AddNew;
-    w->modifySqlite();
+    w->setWindowTitle("Modify Contact");
     w->show();
-
-
+    w->modifySqlite();
 }
 
