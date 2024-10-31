@@ -46,6 +46,10 @@ void AddNew::AddSqlite()
     QString phone = ui->lineEdit_2->text();
     QString email = ui->lineEdit_3->text();
     QString address = ui->lineEdit_4->text();
+    MainWindow e1;
+    QString date,time;
+    e1.get_dateAndtime(date, time);
+    date = date + ' ' + time;
 
     if(s1 != "")
     {
@@ -111,7 +115,12 @@ void AddNew::AddSqlite()
 
         if(!b1.first())
         {
-            b1.exec("Create Table contact(name text  primary key not null, phone text unique not null, email text, address text)");
+            b1.exec("Create Table contact"
+                    "(name text primary key not null, "
+                    "phone text unique not null, "
+                    "email text,"
+                    "address text,"
+                    "date text)");
         }
 
         b1.exec(QString("Select * "
@@ -125,9 +134,9 @@ void AddNew::AddSqlite()
         }
         else
         {
-            QString contact = QString("'%1', '%2', '%3', '%4'").arg(name, phone, email, address);
+            QString contact = QString("'%1', '%2', '%3', '%4', '%5'").arg(name, phone, email, address, date);
             b1.exec(QString("Insert Into contact"
-                           "(name, phone, email, address)"
+                           "(name, phone, email, address, date)"
                             "Values(%1)").arg(contact));
 
             if(!filename.isEmpty())
@@ -204,8 +213,6 @@ void AddNew::modifySqlite()
         ui->lineEdit_4->setPlaceholderText(address);
     }
     a1.close();
-
-    //btn1_clicked();
 }
 
 

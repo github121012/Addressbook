@@ -17,20 +17,18 @@ public:
 
 private slots:
     void display_dateAndtime();
-    void btn1_clicked();
-    void btn2_clicked();
-    void btn3_clicked();
-    void btn4_clicked();
-    void btn5_clicked();
+    void on_pushButton_clicked();
+    void on_pushButton_2_clicked();
+    void on_pushButton_3_clicked();
+    void on_pushButton_4_clicked();
+    void on_pushButton_5_clicked();
     void QuerySqlite();
     void deleteSqlite();
     void modify();
-
     void ListSqlite(bool q1);
-
     void on_comboBox_textActivated(const QString &arg1);
-
     void on_listWidget_customContextMenuRequested(const QPoint &pos);
+
 
 private:
     Ui::Addressbook *ui;

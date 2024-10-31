@@ -58,7 +58,7 @@ void Register::RegisterSqlite()
         }
         else
         {
-            a1 = QSqlDatabase::addDatabase("SQLITECIPHER");
+            a1 = QSqlDatabase::addDatabase("QSQLITE");
 
         }
         a1.setDatabaseName("addressbook.sqlite3");
